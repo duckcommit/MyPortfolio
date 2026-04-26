@@ -14,7 +14,28 @@
       "Bash(cmd.exe /c \"cd /d C:\\\\Users\\\\offic\\\\Desktop\\\\Projects\\\\MyPortfolio && \\\\\"C:\\\\Program Files\\\\nodejs\\\\npm.cmd\\\\\" install 2>&1\")",
       "Bash(cmd.exe /c \"\\\\\"C:\\\\Program Files\\\\nodejs\\\\npm.cmd\\\\\" --version 2>&1\")",
       "Bash(cmd.exe /c \"\\\\\"C:\\\\Program Files\\\\nodejs\\\\npm.cmd\\\\\" --version > C:\\\\Users\\\\offic\\\\Desktop\\\\Projects\\\\MyPortfolio\\\\npm_out.txt 2>&1\")",
-      "Bash(powershell.exe -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\offic\\\\Desktop\\\\Projects\\\\MyPortfolio\\\\start_check.ps1\")"
+      "Bash(powershell.exe -ExecutionPolicy Bypass -File \"C:\\\\Users\\\\offic\\\\Desktop\\\\Projects\\\\MyPortfolio\\\\start_check.ps1\")",
+      "WebFetch(domain:v0-optimus-delta.vercel.app)",
+      "Bash(curl -s \"https://v0-optimus-delta.vercel.app/\")",
+      "Bash(curl -s \"https://v0-optimus-delta.vercel.app/_next/static/chunks/55889fb8d5f68641.css\")",
+      "Bash(curl -s \"https://v0-optimus-delta.vercel.app/_next/static/chunks/3dc6920902170bda.css\")",
+      "Bash(grep -E \"\\(:root|--background|--foreground|--primary|--muted|--accent|--card|--border|#[0-9a-fA-F]{3,6}|hsl\\\\\\(\\)\")",
+      "Bash(grep -oE '\\(--[a-z-]+:[^;]+;|:root\\\\{[^}]+\\\\}|\\\\.dark\\\\{[^}]+\\\\}|#[0-9a-fA-F]{3,8}|oklch\\\\\\([^\\)]+\\\\\\)|hsl\\\\\\([^\\)]+\\\\\\)\\)')",
+      "Bash(grep -oE '<\\(header|section|div|h1|h2|h3|p|nav|footer\\)[^>]*class=\"[^\"]*\"[^>]*>[^<]{0,100}')",
+      "Bash(curl -s \"https://v0-optimus-delta.vercel.app/_next/static/chunks/4ee6091cb6e16beb.js\")",
+      "Bash(grep -oE '\\(scrollY|scrolled|isScrolled|navbar|header|useScroll|transition|animate|opacity|translate|intersection|observer\\)[^;]{0,200}')",
+      "Bash(grep -oE '\"scrolled\"[^}]{0,300}')",
+      "Bash(curl -s \"https://v0-optimus-delta.vercel.app/_next/static/chunks/cc0187ae3eacb44a.js\")",
+      "Bash(grep -oE '\\(scrollY|scrolled|isScrolled|border|bg-background|backdrop|px-|py-|opacity|transition|h-[0-9]|max-w|header|nav|animate|char|fadeIn|observe\\)[^\"]{0,150}')",
+      "Bash(grep -oE 'scrollY[^;,\\)]{0,200}')",
+      "Bash(grep -oE '\\(IntersectionObserver|observe|isVisible|isIntersecting|char-in|charIn|animate-char|heroRef|useEffect\\)[^;\\)]{0,300}')",
+      "Bash(grep -oE 'opacity-100[^,\\)]{0,100}')",
+      "WebFetch(domain:edwinle.com)",
+      "WebSearch",
+      "Bash(find \"c:\\\\\\\\Users\\\\\\\\offic\\\\\\\\Desktop\\\\\\\\Projects\\\\\\\\MyPortfolio\\\\\\\\src\\\\\\\\components\" -type f -name \"*.jsx\")",
+      "Bash(find \"c:\\\\\\\\Users\\\\\\\\offic\\\\\\\\Desktop\\\\\\\\Projects\\\\\\\\MyPortfolio\" -type f \\\\\\( -name \"*.css\" -o -name \"*.scss\" -o -name \"*.module.css\" \\\\\\))",
+      "Bash(python3 -c ' *)",
+      "Bash(node -e ' *)"
     ]
   }
 }
