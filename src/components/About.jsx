@@ -1,83 +1,112 @@
 import { useEffect, useRef } from 'react'
 
-const skills = [
-  { name: 'Flutter / Dart',    level: 'Expert',       width: 92 },
-  { name: 'UI / UX Design',    level: 'Advanced',     width: 85 },
-  { name: 'Product Strategy',  level: 'Growing',      width: 68 },
-  { name: 'User Research',     level: 'Intermediate', width: 72 },
-  { name: 'Data Analysis',     level: 'Intermediate', width: 60 },
-]
+const BIO_WORDS = [
+  { t: "I'm a software engineer from the",                                      b: false },
+  { t: "Indian Institute of Information Technology,",                    b: true  },
+  { t: "and over the past three years, I've built",                             b: false },
+  { t: "Flutter products",                                                      b: true  },
+  { t: "used by",                                                               b: false },
+  { t: "real people in the real world.",                                        b: true  },
+  { t: "As a",                                                                  b: false },
+  { t: "founding engineer",                                                     b: true  },
+  { t: "at a Canadian home and auto services startup, I helped shape everything from", b: false },
+  { t: "mobile architecture",                                                   b: true  },
+  { t: "to",                                                                    b: false },
+  { t: "user experience and product decisions.",                                b: true  },
+  { t: "At",                                                                    b: false },
+  { t: "Globatech,",                                                            b: true  },
+  { t: "I build",                                                               b: false },
+  { t: "white-labelled fintech products",                                       b: true  },
+  { t: "that balance user needs, business goals, and scale. Through it all, I've developed a deep appreciation for", b: false },
+  { t: "thoughtful design,",                                                    b: true  },
+  { t: "strong product thinking,",                                              b: true  },
+  { t: "and the impact of",                                                     b: false },
+  { t: "building the right thing",                                              b: true  },
+  { t: "— not just building it well.",                                          b: false },
+].flatMap(({ t, b }) => t.split(' ').map(word => ({ word, bold: b })))
 
 export default function About() {
-  const wrapRef = useRef(null)
+  const sectionRef = useRef(null)
+  const wordRefs = useRef([])
 
   useEffect(() => {
-    const el = wrapRef.current
-    if (!el) return
+    const section = sectionRef.current
+    if (!section) return
 
-    const fills = el.querySelectorAll('.skill-fill')
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            fills.forEach(f => { f.style.width = f.dataset.width + '%' })
-            observer.disconnect()
-          }
-        })
-      },
-      { threshold: 0.3 },
-    )
+    const onScroll = () => {
+      const scrollTop = window.scrollY
+      const sectionTop = section.offsetTop
+      const sectionH = section.offsetHeight
+      const winH = window.innerHeight
 
-    observer.observe(el)
-    return () => observer.disconnect()
+      const progress = Math.max(
+        0,
+        Math.min(1, (scrollTop - sectionTop) / (sectionH - winH))
+      )
+
+      wordRefs.current.forEach((el, i) => {
+        if (!el) return
+        const wp = Math.max(
+          0,
+          Math.min(1, (progress * BIO_WORDS.length - i + 3) / 6)
+        )
+        el.style.color = `rgba(255,255,255,${(0.12 + wp * 0.88).toFixed(3)})`
+      })
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   return (
-    <section id="about">
-      <div className="section-label">About me</div>
-      <h2 className="section-title">
-        Builder with a<br />designer&apos;s eye
-      </h2>
-
-      <div className="about-grid" ref={wrapRef}>
-        <div className="about-left">
-          <p>
-            I&apos;ve spent the last few years building{' '}
-            <strong>production Flutter apps</strong> that people actually love
-            using — obsessing over every animation curve, every spacing
-            decision, every micro-interaction.
-          </p>
-          <p>
-            Now I&apos;m making a deliberate move into{' '}
-            <strong>product management</strong>. Not because I&apos;m running
-            away from building, but because I want to decide <em>what</em>{' '}
-            gets built and <em>why</em>. I think the best PMs have shipped
-            code. I have.
-          </p>
-          <p>
-            I bring something rare to a PM role: I can prototype in hours,
-            read a Figma file with a critical eye, and still run a structured
-            discovery sprint.
-          </p>
-        </div>
-
-        <div className="about-right skills-wrap">
-          {skills.map(({ name, level, width }) => (
-            <div className="skill-item" key={name}>
-              <div className="skill-top">
-                <span>{name}</span>
-                <span>{level}</span>
-              </div>
-              <div className="skill-track">
-                <div
-                  className="skill-fill"
-                  data-width={width}
-                  style={{ width: 0 }}
-                />
-              </div>
-            </div>
+    <section
+      id="about"
+      ref={sectionRef}
+      style={{ minHeight: '120vh', padding: 0 }}
+    >
+      <div
+        style={{
+          position: 'sticky',
+          top: 0,
+          width: '100%',
+          height: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '0 12px',
+          boxSizing: 'border-box',
+        }}
+      >
+        <p
+          style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontSize: 'clamp(1.4rem, 2.2vw, 2.8rem)',
+            fontWeight: 300,
+            lineHeight: 1.5,
+            textAlign: 'center',
+            width: '100%',
+            maxWidth: '1600px',
+            letterSpacing: '-0.02em',
+            margin: '0 auto',
+            overflowWrap: 'break-word',
+          }}
+        >
+          {BIO_WORDS.map(({ word, bold }, i) => (
+            <span
+              key={i}
+              ref={el => { wordRefs.current[i] = el }}
+              style={{
+                color: 'rgba(255,255,255,0.12)',
+                fontWeight: bold ? 600 : 200,
+                display: 'inline',
+              }}
+            >
+              {word}
+              {i < BIO_WORDS.length - 1 ? ' ' : ''}
+            </span>
           ))}
-        </div>
+        </p>
       </div>
     </section>
   )
