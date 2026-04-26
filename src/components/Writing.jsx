@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 const posts = [
   {
     num: '01',
@@ -20,23 +22,47 @@ const posts = [
 ]
 
 export default function Writing() {
-  return (
-    <section id="writing" className="writing-section">
-      <div className="section-label">PM Thinking</div>
-      <h2 className="section-title">
-        How I think<br />about product.
-      </h2>
+  const sectionRef = useRef(null)
 
-      <div className="writing-grid">
-        {posts.map(({ num, title, desc, cta }) => (
-          <a href="#" className="writing-card" key={num}>
-            <div className="writing-num">{num}</div>
-            <div className="writing-title">{title}</div>
-            <div className="writing-desc">{desc}</div>
-            <div className="writing-read">{cta}</div>
-          </a>
-        ))}
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const items = el.querySelectorAll('.reveal, .reveal-sm')
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        items.forEach((item, i) => {
+          item.style.transitionDelay = `${i * 100}ms`
+          item.classList.add('visible')
+        })
+        observer.disconnect()
+      },
+      { threshold: 0.05 },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <section id="writing" className="writing-section" ref={sectionRef}>
+      <div className="writing-header reveal">
+        <div className="section-eyebrow">PM Thinking</div>
+        <h2 className="section-title">
+          How I think<br /><em>about product.</em>
+        </h2>
       </div>
+
+      {posts.map(({ num, title, desc, cta }) => (
+        <a href="#" className="writing-row reveal" key={num}>
+          <div className="writing-row-num">{num}</div>
+          <div>
+            <div className="writing-row-title">{title}</div>
+            <div className="writing-row-desc">{desc}</div>
+            <div className="writing-row-cta">{cta}</div>
+          </div>
+          <div className="writing-row-arrow">↗</div>
+        </a>
+      ))}
     </section>
   )
 }
