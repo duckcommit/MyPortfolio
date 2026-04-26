@@ -8,12 +8,15 @@ const links = [
 ]
 
 export default function Nav() {
-  const [active, setActive] = useState('')
+  const [active, setActive]     = useState('')
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
     const sections = document.querySelectorAll('section[id]')
 
     const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+
       let current = ''
       sections.forEach(s => {
         if (window.scrollY >= s.offsetTop - 120) current = s.id
@@ -26,24 +29,24 @@ export default function Nav() {
   }, [])
 
   return (
-    <nav>
-      <a href="#" className="nav-logo">
-        Vyshnav<span>.</span>
-      </a>
+    <header className={`nav-header${scrolled ? ' scrolled' : ''}`}>
+      <div className="nav-pill">
+        <div className="nav-row">
+          <a href="#" className="nav-logo">Vyshnav</a>
 
-      <ul className="nav-links">
-        {links.map(({ id, label }) => (
-          <li key={id}>
-            <a href={`#${id}`} className={active === id ? 'active' : ''}>
-              {label}
-            </a>
-          </li>
-        ))}
-      </ul>
+          <ul className="nav-links">
+            {links.map(({ id, label }) => (
+              <li key={id}>
+                <a href={`#${id}`} className={active === id ? 'active' : ''}>
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
 
-      <a href="#contact" className="nav-cta">
-        Let&apos;s Talk
-      </a>
-    </nav>
+          <a href="#contact" className="nav-cta">Let&apos;s Talk</a>
+        </div>
+      </div>
+    </header>
   )
 }
