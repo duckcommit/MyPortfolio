@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
 
+const base = import.meta.env.BASE_URL
+
 const designs = [
   {
     src: '/design/2do-splash.jpg',
@@ -150,7 +152,7 @@ export default function Gallery() {
               onClick={() => setActive(i % designs.length)}
             >
               <div className="showcase-img">
-                <img src={src} alt={label} />
+                <img src={base + src.slice(1)} alt={label} />
               </div>
               <p className="showcase-label">{label}</p>
             </div>
@@ -166,7 +168,7 @@ export default function Gallery() {
             <div className="design-modal-img-wrap">
               <img
                 className="design-modal-img"
-                src={designs[active].src}
+                src={base + designs[active].src.slice(1)}
                 alt={designs[active].screen}
               />
             </div>
