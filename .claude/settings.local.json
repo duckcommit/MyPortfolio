@@ -35,7 +35,13 @@
       "Bash(find \"c:\\\\\\\\Users\\\\\\\\offic\\\\\\\\Desktop\\\\\\\\Projects\\\\\\\\MyPortfolio\\\\\\\\src\\\\\\\\components\" -type f -name \"*.jsx\")",
       "Bash(find \"c:\\\\\\\\Users\\\\\\\\offic\\\\\\\\Desktop\\\\\\\\Projects\\\\\\\\MyPortfolio\" -type f \\\\\\( -name \"*.css\" -o -name \"*.scss\" -o -name \"*.module.css\" \\\\\\))",
       "Bash(python3 -c ' *)",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(npm run *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\offic\\\\Desktop\\\\Projects\\\\MyPortfolio\" -Recurse)",
+      "Bash(Select-Object FullName, PSIsContainer)",
+      "Bash(Sort-Object FullName)",
+      "Bash(Format-Table -AutoSize)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\offic\\\\Desktop\\\\Projects\\\\MyPortfolio\" | Where-Object { $_.PSIsContainer } | Select-Object Name)"
     ]
   }
 }

@@ -3,21 +3,24 @@ import { useEffect, useRef } from 'react'
 const posts = [
   {
     num: '01',
-    title: "Why Duolingo's streak mechanic is both brilliant and broken",
-    desc: 'A product teardown of one of the most effective — and controversial — retention mechanisms in consumer apps today.',
-    cta: 'Read teardown →',
+    title: 'Reimagining the Indigo Travel Experience',
+    desc: "Redesigned IndiGo's travel-day app experience to reduce cognitive load at peak stress moments — proposing a context-aware Travel Mode with instant boarding pass access and glanceable flight status.",
+    cta: 'Read case study →',
+    href: 'https://www.notion.so/Reimagining-the-Indigo-Travel-Experience-35a43a4a6de8800ba6a5e582e48a9221?source=copy_link',
   },
   {
     num: '02',
     title: "How I'd redesign Google Pay's split bill experience",
     desc: "A spec exercise: user stories, tradeoffs, and a proposed solution for one of the most frustrating flows in India's top UPI app.",
     cta: 'Read spec →',
+    href: '#',
   },
   {
     num: '03',
     title: 'What Flutter taught me about shipping fast without shipping ugly',
     desc: "Speed and quality aren't opposites. Three lessons from building production Flutter apps that apply directly to product decision-making.",
     cta: 'Read essay →',
+    href: '#',
   },
 ]
 
@@ -52,8 +55,8 @@ export default function Writing() {
         </h2>
       </div>
 
-      {posts.map(({ num, title, desc, cta }) => (
-        <a href="#" className="writing-row reveal" key={num}>
+      {posts.map(({ num, title, desc, cta, href }) => (
+        <a href={href} className="writing-row reveal" key={num} target={href !== '#' ? '_blank' : undefined} rel={href !== '#' ? 'noopener noreferrer' : undefined}>
           <div className="writing-row-num">{num}</div>
           <div>
             <div className="writing-row-title">{title}</div>
