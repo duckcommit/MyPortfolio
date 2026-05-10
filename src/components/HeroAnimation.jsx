@@ -8,9 +8,11 @@ const FADE_DURATION  = 500
 /* ─── SURVEY FORM SCREEN (indigo) ────────────────── */
 function SurveyFormScreen() {
   return (
+    <div style={{ background: '#f5f3ff', width: '100%', height: '100%', overflow: 'hidden' }}>
     <div style={{
-      background: '#f5f3ff',
-      width: '100%', height: '100%',
+      width: 300, height: 610,
+      transform: 'scale(1.2)',
+      transformOrigin: 'top left',
       padding: '18px 16px',
       fontFamily: "'Plus Jakarta Sans', sans-serif",
       display: 'flex',
@@ -106,6 +108,7 @@ function SurveyFormScreen() {
           <div key={i} style={{ height: 1, background: 'rgba(99,102,241,0.15)' }} />
         ))}
       </div>
+    </div>
     </div>
   )
 }
