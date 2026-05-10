@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const TEXT = "Hey, I am Vyshnav Ajith."
+const TEXT = "Hey, I am Vyshnav Ajith"
 
 export default function LoadingScreen({ onComplete }) {
   const [displayed, setDisplayed] = useState('')
