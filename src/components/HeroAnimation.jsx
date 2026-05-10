@@ -212,13 +212,11 @@ function PaperWireframeScreen() {
 /* ─── FINAL UI SCREEN (IndiGo redesign) ─────────── */
 function FinalUIScreen() {
   return (
-    <div style={{ width: '100%', height: '100%', overflow: 'hidden' }}>
-      <img
-        src={base + 'design/Indigo-redesigned.png'}
-        alt="IndiGo airline app redesign"
-        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block' }}
-      />
-    </div>
+    <img
+      src={base + 'design/Indigo-redesigned.png'}
+      alt="IndiGo airline app redesign"
+      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top', display: 'block', borderRadius: 18 }}
+    />
   )
 }
 
@@ -226,7 +224,7 @@ function FinalUIScreen() {
 const PHASES = [
   { id: 'survey',    label: 'Research',  Screen: SurveyFormScreen,    type: 'paper' },
   { id: 'wireframe', label: 'Wireframe', Screen: PaperWireframeScreen, type: 'paper' },
-  { id: 'finalui',   label: 'Final UI',  Screen: FinalUIScreen,        type: 'phone' },
+  { id: 'finalui',   label: 'Final UI',  Screen: FinalUIScreen,        type: 'bare'  },
 ]
 
 /* ─── MAIN ────────────────────────────────────────── */
@@ -296,6 +294,11 @@ export default function HeroAnimation() {
             {ghostLayer}
             {contentLayer}
           </div>
+        </div>
+      ) : currentPhase.type === 'bare' ? (
+        <div className="hanim-bare">
+          {ghostLayer}
+          {contentLayer}
         </div>
       ) : (
         <div className="hanim-phone">

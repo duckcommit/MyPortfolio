@@ -41,7 +41,12 @@
       "Bash(Select-Object FullName, PSIsContainer)",
       "Bash(Sort-Object FullName)",
       "Bash(Format-Table -AutoSize)",
-      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\offic\\\\Desktop\\\\Projects\\\\MyPortfolio\" | Where-Object { $_.PSIsContainer } | Select-Object Name)"
+      "PowerShell(Get-ChildItem -Path \"c:\\\\Users\\\\offic\\\\Desktop\\\\Projects\\\\MyPortfolio\" | Where-Object { $_.PSIsContainer } | Select-Object Name)",
+      "Bash(cat vite.config.js)",
+      "Bash(cat vite.config.ts)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }

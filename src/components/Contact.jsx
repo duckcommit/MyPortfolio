@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 const links = [
   { icon: '✉',  label: 'official.vysh@gmail.com', href: 'mailto:official.vysh@gmail.com', primary: true  },
   { icon: 'in', label: 'LinkedIn',                href: 'https://www.linkedin.com/in/vyshnav-ajith/',                               primary: false },
-  { icon: '⌥',  label: 'Resume PDF',              href: '#',                               primary: false },
+  { icon: '⌥',  label: 'Resume PDF',              href: 'https://drive.google.com/file/d/1OJbXf8IBl163tqkGDrNyKCPeVwAF4Dl-/view?usp=sharing', primary: false },
   { icon: '◈',  label: 'GitHub',                  href: 'https://github.com/duckcommit',                               primary: false },
 ]
 
@@ -50,6 +50,8 @@ export default function Contact() {
                 href={href}
                 className={`contact-link${primary ? '' : ' ghost'}`}
                 key={label}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
               >
                 <span className="contact-link-icon">{icon}</span>
                 {label}
