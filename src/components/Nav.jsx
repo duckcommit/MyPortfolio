@@ -44,6 +44,12 @@ export default function Nav() {
             ))}
           </ul>
 
+          <a
+            href="https://drive.google.com/file/d/1OJbXf8IBl163tqkGDrNyKCPeVwAF4Dl-/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-resume"
+          >Resume</a>
           <a href="#contact" className="nav-cta">Let&apos;s Talk</a>
         </div>
       </div>
